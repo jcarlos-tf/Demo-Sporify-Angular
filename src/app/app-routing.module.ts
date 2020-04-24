@@ -1,7 +1,9 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { HomePage } from "./features/home/home.page";
+import { RouterModule, Routes } from "@angular/router";
+import { BuscarArtistasComponent } from "./features/buscar-artistas/buscar-artistas.component";
+import { BuscarTarjetasModule } from "./features/buscar-artistas/buscar-artistas.module";
 import { HomeModule } from "./features/home.module";
+import { HomePage } from "./features/home/home.page";
 
 const routes: Routes = [
   {
@@ -13,10 +15,14 @@ const routes: Routes = [
     path: "home",
     component: HomePage,
   },
+  {
+    path: "search",
+    component: BuscarArtistasComponent,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), HomeModule],
+  imports: [RouterModule.forRoot(routes), HomeModule, BuscarTarjetasModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

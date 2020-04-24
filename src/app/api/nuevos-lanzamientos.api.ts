@@ -23,7 +23,7 @@ export class NuevosLanzamientosApi {
   getNuevosLanzamientos(): Observable<Albums> {
     const headers = new HttpHeaders({
       Authorization:
-        "Bearer BQAZAL70Z0FyHMueZZVePpmPr4T9bpxVgkxylKCGQmUU9V69Kix7fxX8APAiTPfdaHCe-AkBWgFPNldDcI0",
+        "Bearer BQAIa3EJNn7MgXj1sjOZwigrkrsKl0-3048VONYUoIG7BzhplI-fZTS_dCwHWE-5PjPQhSevpbrsdG5x-RM",
     });
 
     /* return this.http

@@ -1,6 +1,7 @@
 import * as fromRouter from "@ngrx/router-store";
 import { createFeatureSelector, ActionReducerMap } from "@ngrx/store";
 import * as fromNuevosLanzamietos from "./nuevos-lanzamientos";
+import * as fromBuscarArtistas from "./buscar-artistas";
 import { InjectionToken } from "@angular/core";
 
 export interface State {
@@ -22,11 +23,10 @@ export const {
   selectUrl, // select the current url
 } = fromRouter.getSelectors(selectRouter);
 
-export const selectMTCNRouteParam = selectRouteParam("mtcn");
-
 export interface AppState {
   router: fromRouter.RouterReducerState<any>;
   [fromNuevosLanzamietos.key]: fromNuevosLanzamietos.State;
+  [fromBuscarArtistas.key]: fromBuscarArtistas.State;
 }
 
 export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<AppState>>(
@@ -35,6 +35,7 @@ export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<AppState>>(
     factory: () => ({
       router: fromRouter.routerReducer,
       nLanzamientos: fromNuevosLanzamietos.reducers,
+      buscarArtistas: fromBuscarArtistas.reducers,
     }),
   }
 );

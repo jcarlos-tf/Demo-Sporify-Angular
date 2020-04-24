@@ -13,7 +13,7 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "src/environments/environment";
 import { EffectsModule } from "@ngrx/effects";
 import { ROOT_EFFECTS } from "./store/effects";
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from "./navbar/navbar.component";
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
@@ -33,7 +33,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     }),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
-      name: "Dinero Express Store",
+      name: "Demo Spotify Store",
 
       // In a production build you would want to disable the Store Devtools
       logOnly: environment.production,
