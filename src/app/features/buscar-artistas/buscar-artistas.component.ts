@@ -10,6 +10,8 @@ import { buscaraArtistasFacade } from "./buscar-artistas.facade";
 })
 export class BuscarArtistasComponent implements OnInit {
   artistas$ = this.buscaraArtistasFacade.artistas$;
+  cargado$ = this.buscaraArtistasFacade.cargado$;
+  cargando$ = this.buscaraArtistasFacade.cargando$;
 
   constructor(private buscaraArtistasFacade: buscaraArtistasFacade) {}
 

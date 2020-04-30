@@ -14,9 +14,10 @@ import { environment } from "src/environments/environment";
 import { EffectsModule } from "@ngrx/effects";
 import { ROOT_EFFECTS } from "./store/effects";
 import { NavbarComponent } from "./navbar/navbar.component";
+import { LoadingComponent } from "./loading/loading.component";
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

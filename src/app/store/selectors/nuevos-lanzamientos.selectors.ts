@@ -11,7 +11,7 @@ export const selectCargadoNuevosLanzamientos = createSelector(
   (estado) => estado.cargado
 );
 
-export const selectCargandoLanzamientos = createSelector(
+export const selectCargandoNuevosLanzamientos = createSelector(
   selectNuevosLanzamientosReducer,
   (estado) => estado.cargando
 );

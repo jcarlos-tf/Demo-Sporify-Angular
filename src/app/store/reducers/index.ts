@@ -3,6 +3,7 @@ import { createFeatureSelector, ActionReducerMap } from "@ngrx/store";
 import * as fromNuevosLanzamietos from "./nuevos-lanzamientos";
 import * as fromBuscarArtistas from "./buscar-artistas";
 import { InjectionToken } from "@angular/core";
+import * as fromConseguirArtista from "./artista";
 
 export interface State {
   router: fromRouter.RouterReducerState<any>;
@@ -27,6 +28,7 @@ export interface AppState {
   router: fromRouter.RouterReducerState<any>;
   [fromNuevosLanzamietos.key]: fromNuevosLanzamietos.State;
   [fromBuscarArtistas.key]: fromBuscarArtistas.State;
+  [fromConseguirArtista.key]: fromConseguirArtista.State;
 }
 
 export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<AppState>>(
@@ -36,6 +38,7 @@ export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<AppState>>(
       router: fromRouter.routerReducer,
       nLanzamientos: fromNuevosLanzamietos.reducers,
       buscarArtistas: fromBuscarArtistas.reducers,
+      conseguirArtista: fromConseguirArtista.reducers,
     }),
   }
 );

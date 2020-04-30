@@ -10,6 +10,7 @@ import { map, catchError } from "rxjs/operators";
 import {
   Albums,
   RespuestaBuscarNuvosLanzamientos,
+  error,
 } from "../types/nuevos-lanzamientos/nuevos-lanzamientos";
 
 @Injectable({
@@ -23,7 +24,7 @@ export class NuevosLanzamientosApi {
   getNuevosLanzamientos(): Observable<Albums> {
     const headers = new HttpHeaders({
       Authorization:
-        "Bearer BQAIa3EJNn7MgXj1sjOZwigrkrsKl0-3048VONYUoIG7BzhplI-fZTS_dCwHWE-5PjPQhSevpbrsdG5x-RM",
+        "Bearer BQCbcKoyBxUkIG1ouwWKpsH_iuUV634PTs4IXl4Q4_q_FEEFzqPjt5jnJPJBf5E99kYcH1dzQjQpbzHOiAE",
     });
 
     /* return this.http

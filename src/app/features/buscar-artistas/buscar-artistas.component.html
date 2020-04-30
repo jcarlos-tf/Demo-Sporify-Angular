@@ -10,4 +10,9 @@
   </div>
 </div>
 
-<tarjetas [items]="artistas$ | async"></tarjetas>
+<tarjetas
+  [items]="artistas$ | async"
+  [cargado]="cargado$ | async"
+  [cargando]="cargando$ | async"
+  [esArtista]="true"
+></tarjetas>

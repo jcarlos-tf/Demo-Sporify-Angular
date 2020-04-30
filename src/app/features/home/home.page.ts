@@ -11,9 +11,10 @@ import { Albums } from "src/app/types/nuevos-lanzamientos/nuevos-lanzamientos";
   providers: [busquedaNuevosLanzamientosFacade],
 })
 export class HomePage implements OnInit {
-  cargado: boolean;
-  cargando: boolean;
+  cargado$ = this.busquedaNuevosLanzamientosFacade.cargado$;
+  cargando$ = this.busquedaNuevosLanzamientosFacade.cargando$;
   nuevasCanciones$ = this.busquedaNuevosLanzamientosFacade.albums$;
+  errorNuevasCanciones$ = this.busquedaNuevosLanzamientosFacade.error$;
 
   constructor(
     private busquedaNuevosLanzamientosFacade: busquedaNuevosLanzamientosFacade

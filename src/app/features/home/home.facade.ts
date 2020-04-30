@@ -1,14 +1,19 @@
 import { Injectable } from "@angular/core";
-import { Store, select } from "@ngrx/store";
+import { select, Store } from "@ngrx/store";
 import { buscarNuevosLanzamientos } from "../../store/actions/nuevos-lanzamientos/nuevos-lanzamientos.actions";
-import { Observable } from "rxjs";
-import { selectQueryParams } from "src/app/store/reducers";
-import { map } from "rxjs/operators";
-import { selectLanzamientosResultados } from "../../store/selectors/nuevos-lanzamientos.selectors";
+import {
+  selectCargadoNuevosLanzamientos,
+  selectCargandoNuevosLanzamientos,
+  selectLanzamientosError,
+  selectLanzamientosResultados,
+} from "../../store/selectors/nuevos-lanzamientos.selectors";
 
 @Injectable()
 export class busquedaNuevosLanzamientosFacade {
   albums$ = this.store.pipe(select(selectLanzamientosResultados));
+  cargado$ = this.store.pipe(select(selectCargadoNuevosLanzamientos));
+  cargando$ = this.store.pipe(select(selectCargandoNuevosLanzamientos));
+  error$ = this.store.pipe(select(selectLanzamientosError));
 
   constructor(private store: Store) {}
 

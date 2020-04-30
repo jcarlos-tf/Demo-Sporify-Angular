@@ -1,1 +1,6 @@
-<tarjetas [items]="nuevasCanciones$ | async"></tarjetas>
+<tarjetas
+  [items]="nuevasCanciones$ | async"
+  [cargado]="cargado$ | async"
+  [cargando]="cargando$ | async"
+  [error]="errorNuevasCanciones$ | async"
+></tarjetas>

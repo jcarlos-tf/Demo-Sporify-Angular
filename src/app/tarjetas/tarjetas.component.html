@@ -1,15 +1,40 @@
-<div class="card-columns m-5" *ngIf="items != null">
-  <div class="card" *ngFor="let item of items['items']">
-    <img [src]="item.images | noimage" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h1 class="card-title">{{ item.name }}</h1>
-      <p class="card-text">
-        <span
-          class="badge badge-pill badge-primary"
-          *ngFor="let artistas of item.artists"
-          >{{ artistas.name }}</span
-        >
-      </p>
+<div class="table-container">
+  <div class="table-container">
+    <div class="shade" *ngIf="cargando || error || (cargado && items === null)">
+      <loading *ngIf="cargando"></loading>
+
+      <span class="mat-body-2 mat-text-warn" *ngIf="error">
+        Hubo un error al cargar la información
+        {{ error.error | json }}
+      </span>
+      <span class="mat-body-2" *ngIf="cargado && items === null">
+        No se encontraron resultados
+      </span>
+    </div>
+    <!--  <div *ngIf="error != null">
+      {{ error.error | json }}
+    </div>
+ -->
+    {{ cargando }}
+    {{ cargado }}
+    <div class="card-columns m-5" *ngIf="items != null">
+      <div
+        class="card"
+        *ngFor="let item of items['items']"
+        (click)="seleccionarArtista(item.id)"
+      >
+        <img [src]="item.images | noimage" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h1 class="card-title">{{ item.name }}</h1>
+          <p class="card-text">
+            <span
+              class="badge badge-pill badge-primary"
+              *ngFor="let artistas of item.artists"
+              >{{ artistas.name }}</span
+            >
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

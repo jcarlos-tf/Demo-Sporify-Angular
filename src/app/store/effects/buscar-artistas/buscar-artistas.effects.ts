@@ -1,58 +1,62 @@
 import { Injectable } from "@angular/core";
-import { createEffect, Actions, ofType } from "@ngrx/effects";
+import { Router } from "@angular/router";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { of } from "rxjs";
+import { catchError, map, switchMap, tap } from "rxjs/operators";
 import { BuscarArtistasApi } from "../../../api/buscar-artistas.api";
+import { seleccionarArtista } from "../../actions/artista-seleccionado.actions";
 import {
+  buscarArtistas,
   buscarArtistasError,
   buscarArtistasExito,
-  buscarArtistas,
 } from "../../actions/buscar-artistas/buscar-artistas.actions";
-import { switchMap, catchError, map } from "rxjs/operators";
-import { of } from "rxjs";
-
-/* @Injectable()
-export class BuscarArtistasEffects {
-  buscarArtistas$ = createEffect(() =>
-    this.acctiones$.pipe(
-      ofType(buscarArtistas),
-      switchMap(() => {
-        return this.busquedaApi.getBuscarAristas().pipe(
-          map((artistas) => buscarArtistasExito({ payload: artistas })),
-          catchError((error: any) => {
-            return of(buscarbuscarArtistasArtistasError({ error }));
-          })
-        );
-      })
-    )
-  );
-
-  constructor(
-    private acctiones$: Actions,
-    private busquedaApi: BuscarArtistasApi
-  ) {}
-} */
 
 @Injectable()
 export class BuscarArtistasEffects {
   buscarBeneficiariosPorCliente$ = createEffect(() =>
     this.acciones$.pipe(
       ofType(buscarArtistas),
-      switchMap(({ termino }) => {
+      switchMap(({ payload }) => {
         return this.busquedaAPI
           .getBuscarAristas({
-            termino: termino,
+            termino: payload,
           })
           .pipe(
             map((albums) => buscarArtistasExito({ payload: albums })),
-            catchError((error: any) => {
+            /*  catchError((error: any) => {
               return of(buscarArtistasError({ error }));
-            })
+            }) */
+            catchError(({ error }) => of(buscarArtistasError({ error })))
           );
       })
     )
   );
 
+  /* buscarBeneficiariosDeClienteSeleccionado$ = createEffect(() =>
+    this.acciones$.pipe(
+      ofType(seleccionarArtista),
+      map(({ payload }) => buscarArtistas({ payload }))
+    )
+  ); */
+
+  navegarHaciaRz$ = createEffect(
+    () =>
+      this.acciones$.pipe(
+        ofType(seleccionarArtista),
+        tap(({ payload: id }) => {
+          this.router.navigate(["/app/buscar/artista"], {
+            queryParams: {
+              id,
+            },
+          });
+        })
+      ),
+    { dispatch: false }
+  );
+
   constructor(
     private acciones$: Actions,
-    private busquedaAPI: BuscarArtistasApi
+    private busquedaAPI: BuscarArtistasApi,
+    private router: Router
   ) {}
 }

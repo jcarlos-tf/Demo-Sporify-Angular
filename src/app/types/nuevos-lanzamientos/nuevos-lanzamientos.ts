@@ -35,3 +35,7 @@ export type images = {
   url: string;
   width: number;
 };
+export type error = {
+  status: number;
+  message: string;
+};

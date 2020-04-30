@@ -1,7 +1,6 @@
 import { createEffect, ofType, Actions } from "@ngrx/effects";
 import { Injectable } from "@angular/core";
 import { NuevosLanzamientosApi } from "../../../api/nuevos-lanzamientos.api";
-import { Router } from "@angular/router";
 import {
   buscarNuevosLanzamientos,
   buscarNuevosLanzamintosExito,
@@ -18,9 +17,12 @@ export class NuevosLanzamientosEffects {
       switchMap(() => {
         return this.busquedaAPI.getNuevosLanzamientos().pipe(
           map((albums) => buscarNuevosLanzamintosExito({ payload: albums })),
-          catchError((error: any) => {
+          /*  catchError((error: any) => {
             return of(buscarNuevosLanzamientosError({ error }));
-          })
+          }) */
+          catchError(({ error }) =>
+            of(buscarNuevosLanzamientosError({ error }))
+          )
         );
       })
     )

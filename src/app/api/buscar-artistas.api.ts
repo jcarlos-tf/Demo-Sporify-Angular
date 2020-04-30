@@ -1,17 +1,13 @@
-import { Injectable } from "@angular/core";
 import {
   HttpClient,
-  HttpHeaders,
   HttpErrorResponse,
+  HttpHeaders,
 } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
-import {
-  Artistas,
-  RespuestaBuscarArtistas,
-  items,
-} from "../types/buscar-artistas";
-import { environment } from "src/environments/environment";
 import { catchError, map } from "rxjs/operators";
+import { environment } from "src/environments/environment";
+import { Artistas, RespuestaBuscarArtistas } from "../types/buscar-artistas";
 
 @Injectable({
   providedIn: "root",
@@ -23,7 +19,7 @@ export class BuscarArtistasApi {
   getBuscarAristas(payload: { termino: string }): Observable<Artistas> {
     const headers = new HttpHeaders({
       Authorization:
-        "Bearer BQAIa3EJNn7MgXj1sjOZwigrkrsKl0-3048VONYUoIG7BzhplI-fZTS_dCwHWE-5PjPQhSevpbrsdG5x-RM",
+        "Bearer BQCbcKoyBxUkIG1ouwWKpsH_iuUV634PTs4IXl4Q4_q_FEEFzqPjt5jnJPJBf5E99kYcH1dzQjQpbzHOiAE",
     });
     // https://api.spotify.com/v1/search?q=metalica&type=artist&limit=15
     return this.http

@@ -1,4 +1,7 @@
-import { Albums } from "src/app/types/nuevos-lanzamientos/nuevos-lanzamientos";
+import {
+  Albums,
+  error,
+} from "src/app/types/nuevos-lanzamientos/nuevos-lanzamientos";
 import { Action, createReducer } from "@ngrx/store";
 import { mutableOn } from "ngrx-etc";
 import * as fromNuevosLanzamientos from "../../actions/nuevos-lanzamientos/nuevos-lanzamientos.actions";
@@ -6,7 +9,7 @@ import * as fromNuevosLanzamientos from "../../actions/nuevos-lanzamientos/nuevo
 export type State = {
   cargado: boolean;
   cargando: boolean;
-  error: any;
+  error: error;
   resultados: Albums;
 };
 

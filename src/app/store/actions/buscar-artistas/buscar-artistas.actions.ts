@@ -1,25 +1,9 @@
-/* import { createAction, props } from "@ngrx/store";
-import { Artistas } from "src/app/types/buscar-artistas";
-
-export const buscarArtistas = createAction("[buscarArtistas] Buscar Artistas");
-
-export const buscarArtistasExito = createAction(
-  "[buscarArtistas] Buscar Artistas",
-  props<{ payload: Artistas }>()
-);
-
-export const buscarArtistasError = createAction(
-  "[buscarArtistas] Buscar Artistas",
-  props<{ error: any }>()
-);
- */
-
 import { createAction, props } from "@ngrx/store";
-import { Artistas } from "../../../types/buscar-artistas";
+import { Artistas, error } from "../../../types/buscar-artistas";
 
 export const buscarArtistas = createAction(
   "[buscarArtistas] Buscar Nuevos buscarArtistas",
-  props<{ termino: string }>()
+  props<{ payload: string }>()
 );
 
 export const buscarArtistasExito = createAction(
@@ -29,5 +13,5 @@ export const buscarArtistasExito = createAction(
 
 export const buscarArtistasError = createAction(
   "[buscarArtistas] Busqueda Nuevos buscarArtistas Error",
-  props<{ error: any }>()
+  props<{ error: error }>()
 );
